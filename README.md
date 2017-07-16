@@ -10,7 +10,7 @@ The purpose of this project is to learn how to tweak PID parameters.
 
 ## Description of P,I,D parameters
 
-P is the proportional component which steers the car in the opposite direction of Cross Track Error (CTE).  Its influence is straightforward.  It is proportionally opposite to CTE.  This value when 0, keeps the steering in the same position. When -ve turns it left and when +ve turns it right.  This causes overshooting for the following reason.  Lets assume we turned left to reduce the CTE and CTE reduced to zero after the turn.  P component becomes zero and hence the steering angle still moves the car left.  After this overshoot error increase again in the opposite direction.
+P is the proportional component which steers the car in the opposite direction of Cross Track Error (CTE).  Its influence is straightforward.  It is proportionally opposite to CTE.  When P is 0,  the steering angle remains same i.e., the car continue to turn in that fixed angle. When P is -ve the steering angle reduces and eventually car starts turning left and vice-versa.  This causes overshooting for the following reason.  Lets assume that we turned left in order to reduce the CTE and CTE becomes zero after the turn.  Since P is proportional to CTE, it becomes zero.  This keeps the steering angle as it is (i.e., turning left) and the car overshoots.  After this overshoot error increases again in the opposite direction and then P activates steering in the other direction.
 
 D is the differential component which prevents the overshooting effect of applying P.  Any decrease in CTE in the previous step makes this component opposite to the previous steer value.  Hence this helps to bring back the steering angle to zero as error approaches zero.
 
