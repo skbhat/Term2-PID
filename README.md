@@ -2,6 +2,33 @@
 Self-Driving Car Engineer Nanodegree Program
 
 ---
+# Rubric Points
+
+## Introduction
+
+The purpose of this project is to learn how to tweak PID parameters.
+
+## Description of P,I,D parameters
+
+P is the proportional component which steers the car in the opposite direction of Cross Track Error (CTE).  Its influence is straightforward.  It is proportionally opposite to CTE.  This value when 0, keeps the steering in the same position. When -ve turns it left and when +ve turns it right.  This causes overshooting for the following reason.  Lets assume we turned left to reduce the CTE and CTE reduced to zero after the turn.  P component becomes zero and hence the steering angle still moves the car left.  After this overshoot error increase again in the opposite direction.
+
+D is the differential component which prevents the overshooting effect of applying P.  Any decrease in CTE in the previous step makes this component opposite to the previous steer value.  Hence this helps to bring back the steering angle to zero as error approaches zero.
+
+I is the integral part which compensates for the bias in the measurements of steering control.  This is proportional to the sum of the errors accumulated over the past.  Even in the absense of any bias, this term helps to increase the steer during sharp turns as the accumulated error in the previous steps increase while steering angle slowsly adapts to the turn.  On the other hand it cause the car to overshoot to the other direction after finishing the sharp turn in order to compensate for the accumulated error.
+
+## Description of parameter tweaking
+
+I have done a manual search for parameters.  Initially I kept the throttle value very low.  I made it zero whenever the speed is above 5.0.  Learned the P parameters on straight portions of the road.  Then started increasing the speed and tweaked the D parameter again on those portions where there is no sharp turn.  Then tried to increase the speed further with I parameter.
+
+## Unsuccessful alternative attempt
+
+I feel that CTE must not decide the steering value directly.  What actually reduces CTE is the current angle value.  And hence we must decide the current steering value based on the desired steering angle that must be achieved.  Suppose the CTE is -ve, then we must turn right.  But if the steering angle is already in the right-turn direction then we should not apply any steering further.
+
+But in order to achieve this I had to learn the effect of steering angle on CTE and then learn the effect of steering value on steering angle.  This became a bit complicated when I have to adapt the value to sharp turning points.  Tried to predict the presence of turning based on the dynamics of CTE.  But could not succeed. 
+
+
+# Original Readme
+
 
 ## Dependencies
 
