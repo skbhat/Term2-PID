@@ -61,14 +61,15 @@ int main()
 
           //desired_speed = 5.0 + 98/(1 + pow(fabs(dcte*50),4)/10000);
           //throttle = (desired_speed-speed)/10;
-          if(speed<15 && speed>=10.0)
-        	  throttle = 0.1;
-          else if(speed<10.0 && speed>=5.0)
-        	  throttle = 0.3;
+          if(speed<10.0 && speed>=5.0)
+        	  throttle = 0.2;
           else if(speed<5.0)
         	  throttle = 0.5;
           else
         	  throttle = 0.0;
+
+//          double throttle_grad = -0.08*fabs(cte)+0.04;
+//          throttle = throttle_grad*speed + 0.2;
 
           /*
           * TODO: Calcuate steering value here, remember the steering value is

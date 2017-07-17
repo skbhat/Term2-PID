@@ -33,7 +33,12 @@ void PID::UpdateError(double cte, double steer, double angle) {
 
 
 	prev_cte = cte;
-	total_cte += cte;
+	if(cte==0){
+		total_cte = 0;
+	}
+	else{
+		total_cte += cte;
+	}
 	iter_count++;
 }
 
